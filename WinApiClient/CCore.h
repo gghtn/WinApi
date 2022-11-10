@@ -41,8 +41,6 @@
 // 장점: 코드가 직관적으로 보기 쉽고 해제가 필요하지 않다.
 // 단점: 원할 때 해제하고 생성하지 못하기 때문에 프로그램이 종료될 때까지 남아있다.
 class CCore {
-
-public:
 	SINGLE(CCore);
 	/* SINGLE(CCore) 매크로
 	static CCore* GetInstance()
@@ -51,8 +49,16 @@ public:
 
 		return &core;
 	}*/
+private:
+	void Update();
+	void Render();
 
 private:
-	CCore();
-	~CCore();
+	HWND	m_hWnd;			// 메인 윈도우 핸들
+	POINT	m_ptResolution;	// 해상도
+	HDC		m_hdc;			// 메인 윈도우에 그릴 dc
+
+public:
+	bool Init(HWND hWnd, POINT ptResolution);
+	void Progress();	// 게임(프로그램) 진행 
 };
