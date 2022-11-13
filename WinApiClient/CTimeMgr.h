@@ -9,11 +9,13 @@ private:
 	LARGE_INTEGER	m_lPrevCount;
 	LARGE_INTEGER	m_lFrequency;
 
-	double			m_dDT;
-	double			m_dAcc;
-	UINT			m_iSCount;
+	float			m_dDT;
+	float			m_dAcc;
+	UINT			m_nSCount;
+	UINT			m_nFPS;
 public:
 	void Init();
 	void Update();
+	float GetDT() { return m_dDT; }
 };
 
