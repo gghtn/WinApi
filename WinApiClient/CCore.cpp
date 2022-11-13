@@ -55,18 +55,19 @@ void CCore::Progress()
 void CCore::Update()
 {
 	Vec2 curPos = g_obj.GetPos();
+	float DeltaTime = CTimeMgr::GetInstance()->GetDT();
 
 	if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
-		curPos.x -= 1;
+		curPos.x -= 300 * DeltaTime;
 	}
 	if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
-		curPos.x += 1;
+		curPos.x += 300 * DeltaTime;
 	}
 	if (GetAsyncKeyState(VK_UP) & 0x8000) {
-		curPos.y -= 1;
+		curPos.y -= 300 * DeltaTime;
 	}
 	if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
-		curPos.y += 1;
+		curPos.y += 300 * DeltaTime;
 	}
 
 	g_obj.SetPos(curPos);
@@ -76,6 +77,7 @@ void CCore::Render()
 {
 	Vec2 curPos = g_obj.GetPos();
 	Vec2 curScale = g_obj.GetScale();
+
 	Rectangle(m_hdc,
 		(int)curPos.x - curScale.x / 2.f,
 		(int)curPos.y - curScale.y / 2.f,

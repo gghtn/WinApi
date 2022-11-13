@@ -61,4 +61,6 @@ private:
 public:
 	bool Init(HWND hWnd, POINT ptResolution);
 	void Progress();	// 게임(프로그램) 진행 
+
+	HWND GetMainHwnd() { return m_hWnd; }
 };
