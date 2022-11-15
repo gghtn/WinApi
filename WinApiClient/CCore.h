@@ -58,6 +58,9 @@ private:
 	POINT	m_ptResolution;	// 해상도
 	HDC		m_hdc;			// 메인 윈도우에 그릴 dc
 
+	HBITMAP m_hBit;			// 더블 버퍼링 비트맵
+	HDC		m_memDC;		// 더블 버퍼링 memDC
+
 public:
 	bool Init(HWND hWnd, POINT ptResolution);
 	void Progress();	// 게임(프로그램) 진행 
