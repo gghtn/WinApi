@@ -2,6 +2,7 @@
 #include "CCore.h"
 #include "CObject.h"
 #include "CTimeMgr.h"
+#include "CKeyMgr.h"
 //CCore* CCore::g_pInst = nullptr;
 
 CCore::CCore():
@@ -57,6 +58,8 @@ void CCore::Progress()
 {
 	// TimeMgr update
 	CTimeMgr::GetInstance()->Update();
+	// KeyMgr update
+	CKeyMgr::GetInstance()->Update();
 
 	Update();
 
@@ -68,7 +71,7 @@ void CCore::Update()
 	Vec2 curPos = g_obj.GetPos();
 	float DeltaTime = CTimeMgr::GetInstance()->GetDT();
 
-	if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
+	if (CKeyMgr::GetInstance()->GetKeyState(KEY::LEFT) == KEY_STATE::HOLD) {
 		curPos.x -= 300 * DeltaTime;
 	}
 	if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
