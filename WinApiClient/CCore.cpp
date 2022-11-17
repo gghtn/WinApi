@@ -39,6 +39,7 @@ bool CCore::Init(HWND hWnd, POINT ptResolution)
 
 	// Mgr 초기화
 	CTimeMgr::GetInstance()->Init();
+	CKeyMgr::GetInstance()->Init();
 
 	// 이중 버퍼링, memDC가 가진 비트맵을 교체할 비트맵 생성
 	m_hBit = CreateCompatibleBitmap(m_hdc, m_ptResolution.x, m_ptResolution.y);
@@ -74,13 +75,13 @@ void CCore::Update()
 	if (CKeyMgr::GetInstance()->GetKeyState(KEY::LEFT) == KEY_STATE::HOLD) {
 		curPos.x -= 300 * DeltaTime;
 	}
-	if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
+	if (CKeyMgr::GetInstance()->GetKeyState(KEY::RIGHT) == KEY_STATE::HOLD) {
 		curPos.x += 300 * DeltaTime;
 	}
-	if (GetAsyncKeyState(VK_UP) & 0x8000) {
+	if (CKeyMgr::GetInstance()->GetKeyState(KEY::UP) == KEY_STATE::HOLD) {
 		curPos.y -= 300 * DeltaTime;
 	}
-	if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
+	if (CKeyMgr::GetInstance()->GetKeyState(KEY::DOWN) == KEY_STATE::HOLD) {
 		curPos.y += 300 * DeltaTime;
 	}
 
